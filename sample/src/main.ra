@@ -1,0 +1,6 @@
+include stdstream.h
+
+pub fn main() {
+	print("hello, world!);
+	return 0;
+}

@@ -1,6 +1,6 @@
 include stdstream.h
 
 pub fn main() {
-	print("hello, world!);
+	print("hello, world!");
 	return 0;
 }

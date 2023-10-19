@@ -1,1 +1,1 @@
-require_relative "pr.rb"
+require_relative "deps/deps"

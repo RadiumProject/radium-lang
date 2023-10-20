@@ -1,7 +1,0 @@
-include stdstream.h
-
-pub fn main() {
-	print("Hello, world!");
-	return 0:
-}
-

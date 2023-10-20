@@ -1,3 +1,5 @@
+# lexer for radium
+
 class Lexer
   KEYWORDS = %w[pub fn print return include while return if].freeze
   OPERATORS = %w[+ - * / = == != < <= > >=].freeze
@@ -6,6 +8,8 @@ class Lexer
     @source_code = source_code
     @tokens = []
     @current_token = ""
+    @token_types = []
+    @token_values = []
   end
 
   def tokenize
@@ -37,30 +41,35 @@ class Lexer
 
   def handle_parenthesis(char)
     add_current_token unless @current_token.empty?
-    @tokens << { type: :parenthesis, value: char }
+    @token_types << :parenthesis
+    @token_values << char
   end
 
   def handle_curly_brace
     add_current_token unless @current_token.empty?
-    @tokens << { type: :curly_brace, value: "{" }
+    @token_types << :curly_brace
+    @token_values << "{"
   end
 
   def handle_semicolon
     add_current_token unless @current_token.empty?
-    @tokens << { type: :semicolon, value: ";" }
+    @token_types << :semicolon
+    @token_values << ";"
   end
 
   def handle_operator(char)
     add_current_token unless @current_token.empty?
-    @tokens << { type: :operator, value: char }
+    @token_types << :operator
+    @token_values << char
   end
 
   def add_current_token
     if KEYWORDS.include?(@current_token)
-      @tokens << { type: :keyword, value: @current_token }
+      @token_types << :keyword
     else
-      @tokens << { type: :identifier, value: @current_token }
+      @token_types << :identifier
     end
+    @token_values << @current_token
     @current_token = ""
   end
 end
@@ -68,7 +77,11 @@ end
 source_code = File.read(@FilePath)
 
 lexer = Lexer.new(source_code)
-tokens = lexer.tokenize
+lexer.tokenize
+@TokenTypes = lexer.instance_variable_get(:@token_types)
+@TokenValue = lexer.instance_variable_get(:@token_values)
 
 puts "[AST]".yellow
-tokens.each { |token| puts "  ├ #{token[:type]}:  #{token[:value]}" }
+@TokenTypes.each_with_index do |type, i|
+  puts "  ├ #{type}:  #{@TokenValue[i]}"
+end

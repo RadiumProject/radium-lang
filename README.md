@@ -1,2 +1,6 @@
 # Radium
-> comming soon
+> comming soon.
+## TODO:
+- write cool readme.
+- write parser.
+- Refactor code for lexer.

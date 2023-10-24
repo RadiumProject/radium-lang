@@ -1,5 +1,5 @@
 # The Radium programming language
-#### ![what?](## What is Radium?)| why? | goals | TODO: | how to contribute?
+#### ![what?](#What is Radium?)| why? | goals | TODO: | how to contribute?
 
 
 ## What is Radium?

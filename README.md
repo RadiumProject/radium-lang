@@ -1,4 +1,4 @@
-# Radium programming language
+# Radium programming language.
 ![](https://cdna.artstation.com/p/assets/images/images/057/603/820/original/blake-s-animatedsiamesecat400x400ish.gif?1672119209)
 
 ## What is Radium?
